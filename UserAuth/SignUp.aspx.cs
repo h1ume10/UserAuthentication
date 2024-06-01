@@ -78,9 +78,11 @@ namespace UserAuth
                 connection.CloseConn();
             }
 
-            MessageBox.Show($"Welcome {firstName}!", "Sign Up Success", MessageBoxButton.OK, MessageBoxImage.Information);
+            Session["UserEmail"] = email;
 
-            Response.Redirect("Default.aspx");
+            MessageBox.Show($"You successfully signed up!", "Sign Up Success", MessageBoxButton.OK, MessageBoxImage.Information);
+
+            Response.Redirect("SignIn.aspx");
 
         }
 

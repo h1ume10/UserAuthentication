@@ -16,7 +16,13 @@ namespace UserAuth
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                if (Session["UserEmail"] != null)
+                {
+                    txtSignInEmail.Text = (string)Session["UserEmail"];
+                }
+            }
         }
 
         protected void btnSignIn_Click(object sender, EventArgs e)
@@ -58,7 +64,7 @@ namespace UserAuth
                             email = reader["emailAddress"].ToString();
                             password = reader["password"].ToString();
                         }
-                        MessageBox.Show("Welcome Back!", "Sign In Successful", MessageBoxButton.OK, MessageBoxImage.Information);
+                        MessageBox.Show("Welcome!", "Sign In Successful", MessageBoxButton.OK, MessageBoxImage.Information);
                         Response.Redirect("Default.aspx", false);
                     }
                     else
